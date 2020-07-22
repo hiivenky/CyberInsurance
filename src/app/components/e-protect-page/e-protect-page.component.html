@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="formE" style="width: 400px;height: 400px;">
+         <mat-card> 
+            <div class="row">
+                <div class="col">
+                    <div class="example-container">
+                        <mat-card> 
+                        <mat-form-field appearance="fill" class="example-full-width">
+                          <mat-label>Enter your FirstName</mat-label>
+                          <input matInput placeholder="Peter" [formControl]="FirstName" [(ngModel)]="model.firstName" required>
+                          <mat-error *ngIf="FirstName.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </mat-card> 
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div class="row">
+                <div class="col">
+                    <div class="example-container">
+                        <mat-card> 
+                        <mat-form-field appearance="fill" class="example-full-width">
+                          <mat-label>Enter your LastName</mat-label>
+                          <input matInput placeholder="Peter" [formControl]="LastName" [(ngModel)]="model.lastName" required>
+                          <mat-error *ngIf="LastName.invalid">{{getNameErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </mat-card> 
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div class="row">
+                <div class="col">
+                    <div class="example-container">
+                        <mat-card> 
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Enter your pincode</mat-label>
+                          <input [(ngModel)]="model.pinCode" matInput placeholder="500032" [formControl]="pincode" required>
+                          <mat-error *ngIf="pincode.invalid">{{getPinCodeErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </mat-card> 
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+         <mat-card>
+            <div class="row">
+                <div class="col">
+                    <button style="margin-left: 130px;" [disabled]="!(!FirstName.invalid&&!LastName.invalid&&!pincode.invalid)" class="btn btn-danger" (click)="submit()">Get A Quote</button>
+                </div>
+            </div>
+        </mat-card>
+        </div>   
+</body>
+</html>
