@@ -10,11 +10,16 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ChoosePolicyComponent } from './components/choose-policy/choose-policy.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 
 const myroute:Routes=[
   {path:'homePage',component:HomePageComponent},
   {path:'EProtect',component:EProtectPageComponent},
+  {path:'choosePolicy',component:ChoosePolicyComponent},
   { path: '**', redirectTo: '/homePage', pathMatch: 'full' },
 ]
 
@@ -22,7 +27,8 @@ const myroute:Routes=[
   declarations: [
     AppComponent,
     EProtectPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    ChoosePolicyComponent
   ],
   imports: [
     FormsModule,
@@ -33,7 +39,9 @@ const myroute:Routes=[
     MatCardModule,
     MatButtonModule,
     RouterModule.forRoot(myroute),
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatStepperModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
