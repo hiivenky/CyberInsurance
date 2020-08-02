@@ -109,9 +109,9 @@
               <td class="col-lg-3">
                 <mat-form-field appearance="fill">
                   <mat-label>Fraud Specialist</mat-label>
-                  <mat-select  [(ngModel)]="consumerFraudSpecialist">
-                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
-                  </mat-select>
+                  <select matNativeControl  [(ngModel)]="consumerFraudSpecialist">
+                    <option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</option>
+                  </select>
                 </mat-form-field>
               </td>
             </tr>
