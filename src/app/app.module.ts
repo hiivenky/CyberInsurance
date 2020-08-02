@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ChoosePolicyComponent } from './components/choose-policy/choose-policy.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -41,7 +42,8 @@ const myroute:Routes=[
     RouterModule.forRoot(myroute),
     MatFormFieldModule,
     MatStepperModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

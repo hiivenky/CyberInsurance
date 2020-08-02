@@ -1,6 +1,16 @@
-<div class="jumbotron-fluid" style="width: auto;"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
   
+<div class="jumbotron-fluid" style="width: auto;"> 
+  <mat-card>
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <h2>Hii Insured Help us with details to get you an accurate quote</h2>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Provide Details</ng-template>
@@ -8,13 +18,13 @@
         <hr>
         <table>
             <tr>
-               <td class="col-lg-6">
+               <td class="col-lg-3">
                 <mat-form-field>
                     <mat-label>Name</mat-label>
                     <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
                 </mat-form-field>
                </td>
-               <td class="col-lg-6">
+               <td class="col-lg-3">
                 <mat-form-field>
                     <mat-label>Phone</mat-label>
                     <input matInput placeholder="number" formControlName="firstCtrl" required>
@@ -22,13 +32,13 @@
                </td> 
             </tr>
             <tr>
-                <td class="col-lg-6">
+                <td class="col-lg-3">
                     <mat-form-field>
                         <mat-label>Address</mat-label>
                         <input matInput placeholder="52/113-housing board" formControlName="firstCtrl" required>
                     </mat-form-field>
                    </td>
-                   <td class="col-lg-6">
+                   <td class="col-lg-3">
                     <mat-form-field>
                         <mat-label>Country</mat-label>
                         <input matInput placeholder="India" formControlName="firstCtrl" required>
@@ -36,13 +46,13 @@
                    </td>
             </tr>
             <tr>
-                <td class="col-lg-6">
+                <td class="col-lg-3">
                     <mat-form-field>
                         <mat-label>City</mat-label>
                         <input matInput placeholder="Phoenix" formControlName="firstCtrl" required>
                     </mat-form-field>
                    </td>
-                   <td class="col-lg-6">
+                   <td class="col-lg-3">
                     <mat-form-field>
                         <mat-label>State</mat-label>
                         <input matInput placeholder="Florida" formControlName="firstCtrl" required>
@@ -50,7 +60,7 @@
                    </td>
             </tr>
             <tr>
-                <td class="col-lg-6">
+                <td class="col-lg-3">
                     <mat-form-field>
                         <mat-label>State</mat-label>
                         <input matInput placeholder="Florida" formControlName="firstCtrl" required>
@@ -63,9 +73,12 @@
         <table>
             <tr>
                 <td>
-                    <mat-form-field>
+                    <mat-form-field appearance="fill">
                         <mat-label>Term type</mat-label>
-                        <input matInput  placeholder="Last name, First name" formControlName="firstCtrl" required>
+                        <mat-select [(value)]="selected">
+                          <mat-option value="Annual">Annual</mat-option>
+                          <mat-option value="Semi-Annual">Semi-Annual</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </td>
             </tr>
@@ -84,17 +97,108 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Select Coverages</ng-template>
         <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+          <h1>Policy Coverages</h1>
+          <hr>
+          <table style="width: 700px;"> 
+            <tr>
+              <td  class="col-lg-3">
+                <h3>Assignment of Consumer Fraud Speciaist </h3>
+               </td>
+              <td class="col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Fraud Specialist</mat-label>
+                  <mat-select  [(ngModel)]="consumerFraudSpecialist">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Emergency Hotel Assistance</h3>
+              </td>
+              <td class="col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>hotel Assistance</mat-label>
+                  <mat-select [(ngModel)]="hotelAssistance">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Emergency Travel Assistance</h3>
+              </td>
+              <td class="col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>travel Assistance</mat-label>
+                  <mat-select [(ngModel)]="travelAssistance">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Lawyer and Expert Fees</h3>
+              </td>
+              <td class="col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>expert fees</mat-label>
+                  <mat-select [(ngModel)]="lawyerExpertFees">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Lost Wages</h3>
+              </td>
+              <td class="col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>lost wages</mat-label>
+                  <mat-select [(ngModel)]="lostWages">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Re-Applying for stolen identity</h3>
+              </td>
+              <td class="col-lg-3" >
+                <mat-form-field appearance="fill">
+                  <mat-label>stolen Assistance</mat-label>
+                  <mat-select  [(ngModel)]="stolenIdentity">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-lg-3">
+                <h3>Expense for Domestic Travel</h3>
+              </td>
+              <td class="col-lg-3" >
+                <mat-form-field appearance="fill">
+                  <mat-label>domestic travel</mat-label>
+                  <mat-select [(ngModel)]="domesticTravel">
+                    <mat-option *ngFor="let amount of packages" [value]="amount.value">{{amount.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button class="btn btn-primary" mat-button matStepperNext>Next</button>
         </div>
-      </form>
+      
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
@@ -131,6 +235,9 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-</div>  
+</mat-card>
+</div>    
+</body>
+</html>
 
 
