@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class EProtectPageComponent implements OnInit {
   model:any={};
   disable:boolean=true;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -60,7 +60,7 @@ export class EProtectPageComponent implements OnInit {
   }
 
   submit(){
-    alert('inside submit')
+    this.router.navigate(['choosePolicy']);
   }
 
 }
